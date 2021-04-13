@@ -1,0 +1,5 @@
+sudo apt update - y && sudo apt upgrade -y
+sudo apt install tcpdump
+sudo apt install hping3
+sudo apt install inetutils-traceroute
+sudo apt install netcat
