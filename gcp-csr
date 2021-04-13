@@ -1,4 +1,3 @@
-configure terminal
 crypto ikev2 proposal AZURE_IKE_PROPOSAL
   encryption aes-cbc-256 aes-cbc-128 3des
   integrity sha1
@@ -80,5 +79,10 @@ router bgp 64800
   neighbor 169.254.22.1 ebgp-multihop 5
   neighbor 169.254.22.1 update-source Tunnel1
   neighbor 169.254.22.1 activate
+  !
   address-family ipv4 unicast
   network 10.2.145.0 mask 255.255.255.0
+  !
+  end
+  !
+  wr mem
