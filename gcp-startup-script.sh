@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt update -y && sudo apt upgrade -y && sudo apt install -y tcpdump hping3 inetutils-traceroute netcat
+sudo apt update -y && sudo apt upgrade -y && sudo apt install -y tcpdump hping3 inetutils-traceroute netcat tcptraceroute iperf3 nginx
