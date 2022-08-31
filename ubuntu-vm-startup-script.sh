@@ -1,9 +1,12 @@
-#!/bin/sh
-apt update -y && apt upgrade -y
-apt install -y tcpdump hping3 inetutils-traceroute tcptraceroute dnsutils nginx netcat
-echo "net.ipv4.conf.all.accept_redirects = 0" | tee -a /etc/sysctl.conf
-echo "net.ipv4.conf.all.send_redirects = 0" | tee -a /etc/sysctl.conf
-echo "net.ipv4.ip_forward=1" | tee -a /etc/sysctl.conf
-sysctl -p
-echo $(hostname) | tee /var/www/html/index.nginx-debian.html
-iptables -A FORWARD -i eth0 -o eth0 -j ACCEPT
+#! /bin/bash
+apt update
+apt install -y tcpdump hping3 inetutils-traceroute tcptraceroute dnsutils netcat build-essential git apt-transport-https ca-certificates curl software-properties-common
+git clone https://github.com/microsoft/ntttcp-for-linux.git
+cd ntttcp-for-linux/src/
+make
+make install
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt update
+apt install -y docker-ce
+docker run -d -p 8080:8080 jorgecortesdocker/myipapp:v3
