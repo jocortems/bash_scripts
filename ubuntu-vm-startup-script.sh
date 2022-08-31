@@ -1,6 +1,6 @@
 #! /bin/bash
 apt update
-apt install -y tcpdump hping3 inetutils-traceroute tcptraceroute dnsutils netcat build-essential git apt-transport-https ca-certificates curl software-properties-common
+apt install -y tcpdump hping3 inetutils-traceroute tcptraceroute dnsutils netcat build-essential git apt-transport-https ca-certificates curl software-properties-common mtr
 git clone https://github.com/microsoft/ntttcp-for-linux.git
 cd ntttcp-for-linux/src/
 make
@@ -10,3 +10,4 @@ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu fo
 apt update
 apt install -y docker-ce
 docker run -d -p 8080:8080 jorgecortesdocker/myipapp:v3
+ulimit -n 100000
